@@ -47,21 +47,21 @@ export default function App() {
     return (
         <View style={styles.container}>
             {/* MAPA TRAIDO DE components/Map.js Y LE ENVIAMOS LA FUNCION CREADA */}
-            <Map onlongPress={handleLongPress}/>
+            <Map onlongPress={ handleLongPress }/>
             
             {/* PANEL TRAIDO DE components/Panel.js */}
             {/* SE DESCOMENTAREA EL PANEL YA QUE SE LE HA AGREGADO CONTENIDO */}
-            <Panel onPressLeft={handleLista} textLeft='Lista'/>
+            <Panel onPressLeft={ handleLista } textLeft='Lista'/>
 
             {/* MODAL TRAIDO DE components/Modal.js */}
-            <Modal visibility={visibility}>
+            <Modal visibility={ visibility }>
                 { visibilityFilter === 'new_puntos' ?
                     //FRAGMENT - LOS USAMOS CUANDO NO QUEREMOS UTILIZAR LA ETIQUETA VIEW PARA ENVOLVER COMPONENTES
-                    <>
+                    <View style={styles.form}>
                         <Input title="Nombre" placeholder="Nombre del punto" onChangeText = { handleChangeText }/>
-                        <Button title="Aceptar" onPress={handleSubmit}/>
-                    </>
-                    : <List puntos={puntos}/>
+                        <Button title="Aceptar" onPress={ handleSubmit }/>
+                    </View>
+                    : <List puntos={ puntos } closeModal={ () => setVisibility(false) }/>
                 }
             </Modal>
         </View>
@@ -76,6 +76,10 @@ const styles = StyleSheet.create({
         backgroundColor: '#FFF',
         alignItems: 'center',
         justifyContent: 'center',
+    },
+    /* ESTILOS PARA EL INGRESO DE NOMBRES */
+    form: {
+        padding: 15
     },
 
     /* LOS ESTILOS DE map, center y modalView HAN SIDO LLEVADO A OTROS .js PARA SER RETORNADOS EN app.js */

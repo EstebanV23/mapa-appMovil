@@ -1,18 +1,18 @@
 import React from 'react';
 import { FlatList, Text, View, Button, StyleSheet, Dimensions } from 'react-native';
 
-export default ({ puntos }) => {
+export default ({ puntos, closeModal }) => {
     return (
         <>
-            <View style={styles.list}>
+            <View style={ styles.list }>
                 <FlatList
-                    data={puntos.map(x => x.name)}
-                    renderItems={({ item }) => <Text style={styles.item}>{item}</Text>}
-                    keyExtractor={item => item}
+                    data={ puntos.map(x => x.name) }
+                    renderItems={({ item }) => <Text style={ styles.item }>{ item }</Text>}
+                    keyExtractor={ item => item }
                 />
             </View>
             <View style={styles.button}>
-                <Button title='Cerrar'/>
+                <Button title='Cerrar' onPress={ closeModal }/>
             </View>
         </>
     )
