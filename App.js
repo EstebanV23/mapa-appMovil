@@ -2,8 +2,9 @@
 import * as React from 'react';
 import { StyleSheet, Text, View, Dimensions } from 'react-native';
 /* import MapView from 'react-native-maps'; */
-import Map from './components/Map.js';
-import Modal from './components/Modal.js';
+/* FUNCIONA DE IGUAL FORMA CON EL .js y sin él */
+import Map from './components/Map';
+import Modal from './components/Modal';
 
 export default function App() {
     return (
