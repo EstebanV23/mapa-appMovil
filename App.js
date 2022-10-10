@@ -7,6 +7,7 @@ import Map from './components/Map';
 import Modal from './components/Modal';
 import Input from './components/Input';
 import Panel from './components/Panel.js'; //DESCOMENTAREO POR QUE SE HA AGREGADO CONTENIDO
+import List from './components/List';
 
 export default function App() {
     
@@ -21,6 +22,7 @@ export default function App() {
         /* GUARDA LOS PUNTOS */
         /* const newPuntos = puntos.concat({ coordinate: nativeEvent.coordinate});
         setPuntos(newPuntos); */
+        setVisibilityFilter('new_puntos');
         setpuntoTem(nativeEvent.coordinate);
         setVisibility(true);
     };
@@ -41,6 +43,7 @@ export default function App() {
         setVisibility(true)
     }
 
+    console.log(puntos);
     return (
         <View style={styles.container}>
             {/* MAPA TRAIDO DE components/Map.js Y LE ENVIAMOS LA FUNCION CREADA */}
@@ -58,7 +61,7 @@ export default function App() {
                         <Input title="Nombre" placeholder="Nombre del punto" onChangeText = { handleChangeText }/>
                         <Button title="Aceptar" onPress={handleSubmit}/>
                     </>
-                    : <Text>Hola</Text>
+                    : <List puntos={puntos}/>
                 }
             </Modal>
 
