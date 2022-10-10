@@ -56,7 +56,7 @@ export default function App() {
             {/* MODAL TRAIDO DE components/Modal.js */}
             <Modal visibility={visibility}>
                 { visibilityFilter === 'new_puntos' ?
-
+                    //FRAGMENT - LOS USAMOS CUANDO NO QUEREMOS UTILIZAR LA ETIQUETA VIEW PARA ENVOLVER COMPONENTES
                     <>
                         <Input title="Nombre" placeholder="Nombre del punto" onChangeText = { handleChangeText }/>
                         <Button title="Aceptar" onPress={handleSubmit}/>
@@ -64,7 +64,6 @@ export default function App() {
                     : <List puntos={puntos}/>
                 }
             </Modal>
-
         </View>
     )
 }
