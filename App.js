@@ -47,7 +47,7 @@ export default function App() {
     return (
         <View style={styles.container}>
             {/* MAPA TRAIDO DE components/Map.js Y LE ENVIAMOS LA FUNCION CREADA */}
-            <Map onlongPress={ handleLongPress }/>
+            <Map onlongPress={ handleLongPress } puntos={ puntos }/>
             
             {/* PANEL TRAIDO DE components/Panel.js */}
             {/* SE DESCOMENTAREA EL PANEL YA QUE SE LE HA AGREGADO CONTENIDO */}
