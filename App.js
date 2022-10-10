@@ -3,8 +3,9 @@ import React, { useState } from 'react';
 import { StyleSheet, Text, View, Dimensions } from 'react-native';
 /* import MapView from 'react-native-maps'; */
 /* FUNCIONA DE IGUAL FORMA CON EL .js y sin él */
-import Map from './components/Map.js';
-import Modal from './components/Modal.js';
+import Map from './components/Map';
+import Modal from './components/Modal';
+import Input from './components/Input';
 /* import Panel from './components/Panel.js'; */
 
 export default function App() {
@@ -13,12 +14,22 @@ export default function App() {
         console.log(nativeEvent);
     } */
     const [ puntos, setPuntos ] = useState([]);
+    const [ puntoTem, setpuntoTem ] = useState([]);
+    const [ nombre, setNombre ] = useState([]);
+    const [ visibility, setVisibility ] = useState(false);
+
     const handleLongPress = ({ nativeEvent }) => {
         /* GUARDA LOS PUNTOS */
-        const newPuntos = puntos.concat({ coordinate: nativeEvent.coordinate});
-        setPuntos(newPuntos);
+        /* const newPuntos = puntos.concat({ coordinate: nativeEvent.coordinate});
+        setPuntos(newPuntos); */
+        setpuntoTem(nativeEvent.coordinate);
+        setVisibility(true);
     };
-    console.log(puntos);
+
+    const handleChangeText = text => {
+        setNombre(text);
+    }
+
     return (
         /* ENVOLVEMOS AL MapView DENTRO DE UN CONTENEDOR PARA ESTIRIZARLOS */
         <View style={styles.container}>
@@ -27,7 +38,12 @@ export default function App() {
 
             {/* MODAL TRAIDO DE components/Modal.js */}
             <Modal visiblility={true}>
-                <Text>Hola Mundo</Text>
+                {/* <Text>Hola Mundo</Text> */}
+                <Input
+                    title="Nombre"
+                    placeholder="Nombre del punto"
+                    onChangeText = { handleChangeText }
+                />
             </Modal>
 
             {/* PANEL TRAIDO DE components/Panel.js */}
