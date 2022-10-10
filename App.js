@@ -3,8 +3,9 @@ import * as React from 'react';
 import { StyleSheet, Text, View, Dimensions } from 'react-native';
 /* import MapView from 'react-native-maps'; */
 /* FUNCIONA DE IGUAL FORMA CON EL .js y sin él */
-import Map from './components/Map';
-import Modal from './components/Modal';
+import Map from './components/Map.js';
+import Modal from './components/Modal.js';
+import Panel from './components/Panel.js';
 
 export default function App() {
     return (
@@ -15,6 +16,9 @@ export default function App() {
 
             {/* MODAL TRAIDO DE components/Modal.js */}
             <Modal/>
+
+            {/* PANEL TRAIDO DE components/Panel.js */}
+            <Panel/>
         </View>
     )
 }
