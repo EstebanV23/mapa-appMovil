@@ -26,7 +26,9 @@ export default function App() {
             <Map onlongPress={handleLongPress}/>
 
             {/* MODAL TRAIDO DE components/Modal.js */}
-            <Modal/>
+            <Modal visiblility={true}>
+                <Text>Hola Mundo</Text>
+            </Modal>
 
             {/* PANEL TRAIDO DE components/Panel.js */}
             {/* EL PANEL ESTÁ VACIO POR LO TANTO GENERA UN ERROR, FALTA DIAPOSITIVA EN EL DOCUMENTO DEL PROFESOR */}
