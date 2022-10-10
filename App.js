@@ -1,5 +1,5 @@
 /* IMPORTAMOS TODAS LAS LIBRERIAS DE 'reaact' */
-import * as React from 'react';
+import React, { useState } from 'react';
 import { StyleSheet, Text, View, Dimensions } from 'react-native';
 /* import MapView from 'react-native-maps'; */
 /* FUNCIONA DE IGUAL FORMA CON EL .js y sin él */
@@ -8,11 +8,22 @@ import Modal from './components/Modal.js';
 /* import Panel from './components/Panel.js'; */
 
 export default function App() {
+    /* SOLO SE ACTIVA CUANDO NOSOTROS MANTENGAMOS PRESIOANDO EL DEDO SOBRE EL MAPA DURANTE UN TIEMPO */
+    /* const handleLongPress = ({ nativeEvent }) => {
+        console.log(nativeEvent);
+    } */
+    const [ puntos, setPuntos ] = useState([]);
+    const handleLongPress = ({ nativeEvent }) => {
+        /* GUARDA LOS PUNTOS */
+        const newPuntos = puntos.concat({ coordinate: nativeEvent.coordinate});
+        setPuntos(newPuntos);
+    };
+    console.log(puntos);
     return (
         /* ENVOLVEMOS AL MapView DENTRO DE UN CONTENEDOR PARA ESTIRIZARLOS */
         <View style={styles.container}>
-            {/* MAPA TRAIDO DE components/Map.js */}
-            <Map/>
+            {/* MAPA TRAIDO DE components/Map.js Y LE ENVIAMOS LA FUNCION CREADA */}
+            <Map onlongPress={handleLongPress}/>
 
             {/* MODAL TRAIDO DE components/Modal.js */}
             <Modal/>
