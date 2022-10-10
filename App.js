@@ -1,6 +1,6 @@
 /* IMPORTAMOS TODAS LAS LIBRERIAS DE 'reaact' */
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, Dimensions, Button } from 'react-native';
+import { StyleSheet, View, Button } from 'react-native';
 /* import MapView from 'react-native-maps'; */
 /* FUNCIONA DE IGUAL FORMA CON EL .js y sin él */
 import Map from './components/Map';
@@ -16,13 +16,13 @@ export default function App() {
     const [ nombre, setNombre ] = useState('');//LE PASO UN STRING
     const [ visibilityFilter, setVisibilityFilter ] = useState('new_puntos');//TIENE DOS VALORES new_puntos, all_puntos
     const [ visibility, setVisibility ] = useState(false);// LE PASO UN BOOLEAN
+    const [ pointsFilter, setPointsFilter ] = useState(true);// LE PASO UN BOOLEAN
     
+    const tooglePointsFilter = () => setPointsFilter(!pointsFilter);
     /* SOLO SE ACTIVA CUANDO NOSOTROS MANTENGAMOS PRESIOANDO EL DEDO SOBRE EL MAPA DURANTE UN TIEMPO */
     const handleLongPress = ({ nativeEvent }) => {
-        /* GUARDA LOS PUNTOS */
-        /* const newPuntos = puntos.concat({ coordinate: nativeEvent.coordinate});
-        setPuntos(newPuntos); */
         setVisibilityFilter('new_puntos');
+        /* GUARDA LOS PUNTOS */
         setpuntoTem(nativeEvent.coordinate);
         setVisibility(true);
     };
@@ -47,11 +47,11 @@ export default function App() {
     return (
         <View style={styles.container}>
             {/* MAPA TRAIDO DE components/Map.js Y LE ENVIAMOS LA FUNCION CREADA */}
-            <Map onlongPress={ handleLongPress } puntos={ puntos }/>
+            <Map onlongPress={ handleLongPress } puntos={ puntos } pointsFilter= { pointsFilter }/>
             
             {/* PANEL TRAIDO DE components/Panel.js */}
             {/* SE DESCOMENTAREA EL PANEL YA QUE SE LE HA AGREGADO CONTENIDO */}
-            <Panel onPressLeft={ handleLista } textLeft='Lista'/>
+            <Panel onPressLeft={ handleLista } textLeft='Lista' tooglePointsFilter={ tooglePointsFilter }/>
 
             {/* MODAL TRAIDO DE components/Modal.js */}
             <Modal visibility={ visibility }>
