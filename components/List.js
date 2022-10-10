@@ -7,7 +7,7 @@ export default ({ puntos, closeModal }) => {
             <View style={ styles.list }>
                 <FlatList
                     data={ puntos.map(x => x.name) }
-                    renderItems={({ item }) => <Text style={ styles.item }>{ item }</Text>}
+                    renderItem={({ item }) => <Text style={ styles.item }>{ item }</Text>}
                     keyExtractor={ item => item }
                 />
             </View>
