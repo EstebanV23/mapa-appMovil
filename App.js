@@ -5,7 +5,7 @@ import { StyleSheet, Text, View, Dimensions } from 'react-native';
 /* FUNCIONA DE IGUAL FORMA CON EL .js y sin él */
 import Map from './components/Map.js';
 import Modal from './components/Modal.js';
-import Panel from './components/Panel.js';
+/* import Panel from './components/Panel.js'; */
 
 export default function App() {
     return (
@@ -18,7 +18,8 @@ export default function App() {
             <Modal/>
 
             {/* PANEL TRAIDO DE components/Panel.js */}
-            <Panel/>
+            {/* EL PANEL ESTÁ VACIO POR LO TANTO GENERA UN ERROR, FALTA DIAPOSITIVA EN EL DOCUMENTO DEL PROFESOR */}
+            {/* <Panel/> */}
         </View>
     )
 }
